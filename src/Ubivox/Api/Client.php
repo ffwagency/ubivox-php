@@ -112,8 +112,8 @@ class Client
      * @param \Exception $exception
      *   Exception of a mixed type.
      */
-    private function handleError($message, $exeption, $type = E_USER_ERROR) {
+    private function handleError($message, $exeption, $type = E_USER_ERROR)
+    {
         trigger_error($message, $type);
     }
-
 }
