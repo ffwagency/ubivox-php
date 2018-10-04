@@ -84,20 +84,15 @@ class Client
     {
         try {
             return $this->getClient()->call($method, $params);
-        }
-        catch (Exception\HttpException $e) {
+        } catch (Exception\HttpException $e) {
             trigger_error("XmlRpc HTTP Exception: (code: {$e->getCode()}, message: {$e->getMessage()})", E_USER_ERROR);
-        }
-        catch (Exception\RuntimeException $e) {
+        } catch (Exception\RuntimeException $e) {
             trigger_error("XmlRpc Runtime Exception: (code: {$e->getCode()}, message: {$e->getMessage()})", E_USER_ERROR);
-        }
-        catch (Exception\IntrospectException $e) {
+        } catch (Exception\IntrospectException $e) {
             trigger_error("XmlRpc Introspect Exception: (code: {$e->getCode()}, message: {$e->getMessage()})", E_USER_ERROR);
-        }
-        catch (Exception\FaultException $e) {
+        } catch (Exception\FaultException $e) {
             trigger_error("XmlRpc Fault Exception: (code: {$e->getCode()}, message: {$e->getMessage()})", E_USER_ERROR);
-        }
-        catch (Exception\InvalidArgumentException $e) {
+        } catch (Exception\InvalidArgumentException $e) {
             trigger_error("XmlRpc Invalid Argument Exception: (code: {$e->getCode()}, message: {$e->getMessage()})", E_USER_ERROR);
         }
     }
