@@ -85,16 +85,35 @@ class Client
         try {
             return $this->getClient()->call($method, $params);
         } catch (Exception\HttpException $e) {
-            trigger_error("XmlRpc HTTP Exception: (code: {$e->getCode()}, message: {$e->getMessage()})", E_USER_ERROR);
+            $message = "XmlRpc HTTP Exception: (code: {$e->getCode()}, message: {$e->getMessage()})";
+            $this->handleError($message, $e);
         } catch (Exception\RuntimeException $e) {
-            trigger_error("XmlRpc Runtime Exception: (code: {$e->getCode()}, message: {$e->getMessage()})", E_USER_ERROR);
+            $message = "XmlRpc Runtime Exception: (code: {$e->getCode()}, message: {$e->getMessage()})";
+            $this->handleError($message, $e);
         } catch (Exception\IntrospectException $e) {
-            trigger_error("XmlRpc Introspect Exception: (code: {$e->getCode()}, message: {$e->getMessage()})", E_USER_ERROR);
+            $message = "XmlRpc HTTP Introspect: (code: {$e->getCode()}, message: {$e->getMessage()})";
+            $this->handleError($message, $e);
         } catch (Exception\FaultException $e) {
-            trigger_error("XmlRpc Fault Exception: (code: {$e->getCode()}, message: {$e->getMessage()})", E_USER_ERROR);
+            $message = "XmlRpc Fault Exception: (code: {$e->getCode()}, message: {$e->getMessage()})";
+            $this->handleError($message, $e);
         } catch (Exception\InvalidArgumentException $e) {
-            trigger_error("XmlRpc Invalid Argument Exception: (code: {$e->getCode()}, message: {$e->getMessage()})", E_USER_ERROR);
+            $message = "XmlRpc Invalid Argument Exception: (code: {$e->getCode()}, message: {$e->getMessage()})";
+            $this->handleError($message, $e);
         }
+    }
+
+    /**
+     * Handle API error.
+     *
+     * @param string $message
+     *   Error message to be logged.
+     * @param integer $type
+     *   Error type
+     * @param \Exception $exception
+     *   Exception of a mixed type.
+     */
+    private function handleError($message, $exeption, $type = E_USER_ERROR) {
+        trigger_error($message, $type);
     }
 
 }
