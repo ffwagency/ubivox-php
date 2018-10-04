@@ -1,0 +1,27 @@
+{
+    "name": "ffwagency/ubivox-php",
+    "description": "Ubivox PHP SDK (unofficially)",
+    "homepage": "https://github.com/ffwagency/ubivox-php",
+    "keywords": [
+        "php", "ffwagency", "ubivox"
+    ],
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Jens Beltofte",
+            "email": "jens.beltofte@ffwagency.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0",
+        "zendframework/zend-xmlrpc": "^2.7"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.8.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ubivox\\Api\\": "src/Ubivox/Api"
+        }
+    }
+}

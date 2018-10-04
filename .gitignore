@@ -1,0 +1,11 @@
+composer.lock
+vendor
+
+// PhpStorm
+.idea
+
+// OSX
+.DS_Store
+
+// ettings.php
+examples/settings.php

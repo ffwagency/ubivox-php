@@ -1,0 +1,18 @@
+language: php
+
+php:
+  - 7.1
+  - 7.2
+
+before_install:
+  - phpenv config-rm xdebug.ini
+  - travis_retry composer self-update && composer install
+
+install:
+  - pear install pear/PHP_CodeSniffer
+  - phpenv rehash
+
+script:
+#  - vendor/bin/phpunit
+#  - phpcs --extensions=php --standard=PSR2 src/ tests/
+  - phpcs --extensions=php --standard=PSR2 src/ examples/
