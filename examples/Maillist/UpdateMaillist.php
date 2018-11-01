@@ -13,17 +13,18 @@ include("../../vendor/autoload.php");
 include("../settings.php");
 
 use Ubivox\Api\Client as UbivoxClient;
-use Ubivox\Api\Resources\Endpoints\Delivery\UpdateDelivery;
+use Ubivox\Api\Resources\Endpoints\Maillist\UpdateMaillist;
 
 $client = new UbivoxClient(UBIVOX_COMPANY, UBIVOX_USERNAME, UBIVOX_PASSWORD);
 $params = [
-    'delivery' => 872608,
-    'subject' => 'The subject of my awesome Ubivox newsletter UPDATED ' . date('Y-m-d H:i:s') . '',
-    'html_body' => '<html><head></head><body><h1>Hello world! Updated ' . date('Y-m-d H:i:s') . '</h1></body>',
-    'text_body' => 'Hello world! Updated ' . date('Y-m-d H:i:s'),
-    'list' => 47328
+    'maillist' => 47365,
+    'title' => 'The Company Ltd - B2C users UPDATED ' . date('Y-m-d H:i:s'),
+    'language' => 'en',
+    'delivery_sender_name' => 'The Company Ltd.',
+    'delivery_sender_email' => 'noreply@company.ltd',
+    'primary_data_fields' => [],
 ];
-$lists = new UpdateDelivery($client, $params);
+$lists = new UpdateMaillist($client, $params);
 
 echo "<pre>";
 var_dump($lists->getResultRaw());

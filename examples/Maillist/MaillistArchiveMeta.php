@@ -13,17 +13,15 @@ include("../../vendor/autoload.php");
 include("../settings.php");
 
 use Ubivox\Api\Client as UbivoxClient;
-use Ubivox\Api\Resources\Endpoints\Delivery\CreateDelivery;
+use Ubivox\Api\Resources\Endpoints\Maillist\MaillistArchiveMeta;
 
 $client = new UbivoxClient(UBIVOX_COMPANY, UBIVOX_USERNAME, UBIVOX_PASSWORD);
 $params = [
-    'subject' => 'The subject of my awesome Ubivox newsletter',
-    'html_body' => '<html><head></head><body><h1>Hello world!</h1></body>',
-    'text_body' => 'Hello world!',
-    'list' => 47328
+    'maillist' => 47328,
+    'count' => 10
 ];
-$lists = new CreateDelivery($client, $params);
+$lists = new MaillistArchiveMeta($client, $params);
 
 echo "<pre>";
-var_dump($lists->getResultRaw());
+var_dump($lists->getResultFormatted());
 exit;
